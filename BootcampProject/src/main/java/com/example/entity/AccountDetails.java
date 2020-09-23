@@ -13,10 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="Account")
+@Entity									//Refers Present class will map to a table in database
+@Table(name="Account")					//Name of the table
 public class AccountDetails {
-	@Id   //primary Key
+	@Id   								 //primary Key
 	@Column(name="accountId",length=12)  //name and length of column      
 	private long accountId;
 	@Column(length=15)
@@ -46,7 +46,7 @@ public class AccountDetails {
 		  this.transactionsDone = transactionsDone;
 	  }
 	 
-	 
+	 //getter and setter methods
 	public long getAccountId() {
 		return accountId;
 	}

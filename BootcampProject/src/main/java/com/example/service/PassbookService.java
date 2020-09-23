@@ -15,6 +15,10 @@ public interface PassbookService {
 
 	AccountDetails postDetails(AccountDetails acc);
 
+	List<TransactionsDone> updatePassbook(Long accountId);
+
+	void updateLastUpdated(Long accountId);
+
 	
 
 }

@@ -37,6 +37,22 @@ public class PassbookController {
 		}
 	 }
 	
+	@GetMapping("/updatePabook/{accountId}")
+	public List<TransactionsDone> updatePassbook(@PathVariable Long accountId) throws IdNotFound
+	{
+		List<AccountDetails> account1=service1.accountValidation(accountId);
+		if(account1.isEmpty())
+		{
+			throw new IdNotFound("AccountId does not exist");
+		}
+		else {
+			List<TransactionsDone> trns=service1.updatePassbook(accountId);
+			
+			return trns;
+		}
+		
+	}
+	
 	//method to add transactions 
 	@PostMapping("/postdata")
 	public AccountDetails postDetails(@RequestBody AccountDetails acc) {
