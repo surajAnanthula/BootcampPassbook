@@ -13,15 +13,15 @@ import com.example.entity.TransactionsDone;
 @Repository
 public interface AccountSummaryDao extends JpaRepository<AccountDetails,Integer>{
 
-	@Query("select p from TransactionsDone p where account_Id=?1 and p.transDate>=?2 and p.transDate<=?3") //jpa query to get all the transactions between given dates
-	//@Query("select p from TransactionsDone p where account_Id=?1 and p.transDate >= :startDate and .transDate <=")
+	//jpa query to get all the transactions between given dates
+	@Query("select p from TransactionsDone p where account_Id=?1 and p.transDate>=?2 and p.transDate<=?3") 
 	List<TransactionsDone> getSummary(Long accountId,Date startDate, Date endDate);
 	
-	@Query("select d from AccountDetails d where d.accountId=?1")		//jpa query for validating account
+	//jpa query for validating account
+	@Query("select d from AccountDetails d where d.accountId=?1")		
 	List<AccountDetails> fetch(Long accountId);
 	
-	
-
+	//updating the last date of passbook updation
 	@Modifying
 	@Query("update AccountDetails set lastTransaction=?2 where accountId=?1") //jpa query for updating last transaction date in accountDetails
 	void update(Long accountId, Date date);
